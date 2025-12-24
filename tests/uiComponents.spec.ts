@@ -34,7 +34,7 @@ test.describe('Form Layouts page @block', () => {
 
     // await usingTheGridEmailInput.getByLabel('Option 1').check({force: true})
     await usingTheGridEmailInput.getByRole('radio', {name: 'Option 1'}).check({force: true})
-    const radioStatus = usingTheGridEmailInput.getByRole('radio', {name: 'Option 1'}).isChecked()
+    // const radioStatus = usingTheGridEmailInput.getByRole('radio', {name: 'Option 1'}).isChecked()
     await expect(usingTheGridEmailInput).toHaveScreenshot({maxDiffPixels: 250})
     // expect(radioStatus).toBeTruthy()
     // await expect(usingTheGridEmailInput.getByRole('radio', {name: 'Option 1'})).toBeChecked()
