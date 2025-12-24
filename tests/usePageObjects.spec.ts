@@ -36,4 +36,5 @@ test('Testing with argos ci', async({page}) => {
   const pm = new PageManager(page)
   await pm.navigateTo().formLayoutsPage()
   await pm.navigateTo().datepickerPage()
+
 })
