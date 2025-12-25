@@ -13,8 +13,15 @@ export default defineConfig<TestOptions>({
     ['json', {outputFile: 'test-results/jsonReport.json'}],
     ['junit', {outputFile: 'test-results/junitReport.json'}],
     // ["allure-playwright"],
-    ['html']
-
+    ['html'],
+    process.env.CI ? ["dot"] : ["list"],
+    [
+      "@argos-ci/playwright/reporter",
+      {
+        uploadToArgos: !!process.env.CI,
+        token: process.env.ARGOSTOKEN,
+      },
+    ],
   ],
   use: {
     globalsQAURL: 'https://www.globalsqa.com/demo-site/draganddrop/',
@@ -23,6 +30,7 @@ export default defineConfig<TestOptions>({
         : 'http://localhost:4200/',
 
     trace: 'on-first-retry',
+    screenshot: "only-on-failure",
     video: {
       mode: 'off',
       size : {width: 1920, height: 1080}

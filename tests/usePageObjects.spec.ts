@@ -1,6 +1,7 @@
 import {test} from "@playwright/test";
 import {PageManager} from "../page-objects/pageManager";
 import {faker} from '@faker-js/faker'
+import {argosScreenshot} from "@argos-ci/playwright";
 
 test.beforeEach(async({page}) => {
   await page.goto('/');
@@ -35,6 +36,7 @@ test('Parametrized methods @smoke', async({page}) => {
 test.only('Testing with argos ci', async({page}) => {
   const pm = new PageManager(page)
   await pm.navigateTo().formLayoutsPage()
+  await argosScreenshot(page, "Form payouts page");
   await pm.navigateTo().datepickerPage()
-
+  await argosScreenshot(page, "Datepicker page");
 })
